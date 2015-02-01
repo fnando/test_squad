@@ -1,0 +1,16 @@
+#ember-testing-container {
+  position: absolute;
+  background: white;
+  width: 640px;
+  height: 384px;
+  overflow: auto;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  right: 50px;
+  bottom: 50px;
+  padding: 5px;
+}
+
+#ember-testing {
+  zoom: 50%;
+}

@@ -1,0 +1,12 @@
+//= require application
+//= require expect
+//= require_self
+//= require_tree ./<%= app_name %>
+
+mocha.setup('bdd');
+mocha.checkLeaks();
+mocha.globals(['jQuery']);
+mocha.reporter(mocha.TestSquad);
+window.onload = function(){
+  mocha.run();
+};

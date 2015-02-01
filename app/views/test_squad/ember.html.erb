@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember: <%= TestSquad.app_class_name %></title>
+  <%= stylesheet_link_tag 'qunit', 'test_squad/ember' %>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <div id="ember-testing-container"><div id="ember-testing"></div></div>
+  <%= javascript_include_tag 'qunit', 'test_squad/qunit-phantom', 'test_helper' %>
+</body>
+</html>

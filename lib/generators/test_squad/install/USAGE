@@ -1,0 +1,8 @@
+Description:
+    Generates the JavaScript test directory.
+
+Example:
+    rails generate squad:install -f qunit
+
+    This will create:
+        {spec,test}/javascript
