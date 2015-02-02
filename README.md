@@ -1,6 +1,7 @@
 # TestSquad
 
 [![Build Status](https://travis-ci.org/fnando/test_squad.svg)](https://travis-ci.org/fnando/test_squad)
+[![Code Climate](https://codeclimate.com/github/fnando/test_squad/badges/gpa.svg)](https://codeclimate.com/github/fnando/test_squad)
 
 Running JavaScript tests on your Rails app, the easy way.
 
