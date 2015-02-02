@@ -154,7 +154,6 @@ The rake task accepts some env variables.
 - `HOST`: the binding host. Defaults to `localhost`.
 - `PORT`: the server port. Defaults to `50000`.
 - `TIMEOUT`: how much time a test can take. Defaults to `10` (seconds).
-- `LOG`: set if console messages should be logged. Defaults to `false`.
 - `PHANTOMJS_BIN`: set the PhantomJS binary. Defaults to `phantomjs`.
 
 ## Contributing

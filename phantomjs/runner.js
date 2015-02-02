@@ -11,7 +11,6 @@
   var args = system.args;
   var url = args[1];
   var timeout = parseInt(args[2], 10);
-  var enableLog = args[3] !== 'false';
   var page = webpage.create();
   var suites = [];
   var suite, test;
@@ -75,7 +74,7 @@
     }
 
     return count + ' ' + (count === 1 ? singular : plural);
-  }
+  };
 
   page.onConsoleMessage = function(message) {
     if (test) {

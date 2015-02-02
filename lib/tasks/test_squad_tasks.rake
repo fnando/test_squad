@@ -11,7 +11,6 @@ task :test_squad do
   host = ENV.fetch('HOST', 'localhost')
   path = ENV.fetch('TEST_PATH', '/tests')
   timeout = ENV.fetch('TIMEOUT', '10')
-  log = ENV.fetch('LOG', 'false')
   url = File.join("http://#{host}:#{port}", path)
   logger = Logger.new(StringIO.new)
 
@@ -32,8 +31,7 @@ task :test_squad do
   system phantomjs_bin,
     File.expand_path('../../../phantomjs/runner.js', __FILE__),
     url,
-    timeout,
-    log
+    timeout
 
   exit $?.exitstatus
 end
