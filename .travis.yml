@@ -4,6 +4,6 @@ rvm:
 - '2.1'
 - '2.2'
 addons:
-  codeclimate:
+  code_climate:
     repo_token:
       secure: KXqFGWlQlIeoVgySE7gUxXgXMcbJkd6/ckX4Achq3mjCk7WDBPe9ZcObjz89QLoa14bUBnyJpJBXG+KcDlQkZpERfIShiub9OoWejr172/59HThqFJ7j4Xidpt366icUkEAEa53cZhCZl1mgSlaIJy7277LDENWICyeme8fZoT0=
