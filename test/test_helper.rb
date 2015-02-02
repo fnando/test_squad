@@ -1,3 +1,7 @@
+# Set up Codeclimate.
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
