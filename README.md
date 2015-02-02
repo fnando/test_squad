@@ -2,14 +2,15 @@
 
 Running JavaScript tests on your Rails app, the easy way.
 
-- Supports QUnit, Ember.js, Mocha and Jasmine
+- Supports [QUnit](http://qunitjs.com), [Ember.js](http://emberjs.com), [Mocha](http://mochajs.org) and [Jasmine](http://jasmine.github.io/)
 - Go headless with [Phantom.js](http://phantomjs.org)
 - Colored output
 - Asset pipeline support
+- [Rails Assets](http://rails-assets.org) support (Bower Proxy)
 
 ## Installation
 
-Add these lines to your application's Gemfile:
+Add these lines to your application's `Gemfile`:
 
 ```ruby
 group :development, :test do
