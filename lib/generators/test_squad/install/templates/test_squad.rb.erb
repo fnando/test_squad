@@ -2,4 +2,27 @@ TestSquad.configure do |config|
   # Set the testing framework.
   # Can be jasmine, qunit, mocha or ember.
   config.framework = '<%= options[:framework] %>'
+
+  # Set the test server host.
+  # This can also be set through the TEST_SQUAD_SEVER_HOST env var.
+  # config.server_host = '127.0.0.1'
+
+  # Set the test server port.
+  # This can also be set through the TEST_SQUAD_SERVER_PORT env var.
+  # config.server_port = 50000
+
+  # Set the test server path.
+  # You may map the tests path to something else. This change
+  # must be reflected here. This can also be set through the
+  # TEST_SQUAD_SERVER_PATH env var.
+  # config.server_path = '/tests'
+
+  # Set the test timeout.
+  # This can also be set through the TEST_SQUAD_TIMEOUT env var.
+  # It defaults to 10 seconds.
+  # config.timeout = 10
+
+  # Set the phantomjs bin path.
+  # This can also be set through the TEST_SQUAD_PHANTOMJS_BIN env var.
+  # config.phantomjs_bin = 'phantomjs'
 end

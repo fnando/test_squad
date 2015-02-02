@@ -1,9 +1,10 @@
 require 'test_squad/engine'
-require 'ostruct'
+require 'test_squad/runner'
+require 'test_squad/configuration'
 
 module TestSquad
   def self.configuration
-    @configuration ||= OpenStruct.new
+    @configuration ||= Configuration.new
   end
 
   def self.configure(&block)

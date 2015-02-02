@@ -154,10 +154,24 @@ Otherwise you won't be able to to run your in-browser tests.
 
 The rake task accepts some env variables.
 
-- `HOST`: the binding host. Defaults to `localhost`.
-- `PORT`: the server port. Defaults to `50000`.
-- `TIMEOUT`: how much time a test can take. Defaults to `10` (seconds).
-- `PHANTOMJS_BIN`: set the PhantomJS binary. Defaults to `phantomjs`.
+- `TEST_SQUAD_SERVER_HOST`: the binding host. Defaults to `localhost`.
+- `TEST_SQUAD_SERVER_PORT`: the server port. Defaults to `50000`.
+- `TEST_SQUAD_SERVER_PATH`: the server path. Defaults to `/tests`.
+- `TEST_SQUAD_TIMEOUT`: how much time a test can take. Defaults to `10` (seconds).
+- `TEST_SQUAD_PHANTOMJS_BIN`: set the PhantomJS binary. Defaults to `phantomjs`.
+
+You can configure these options using the `{test,spec}/javascript/test_squad.rb` file.
+
+```ruby
+TestSquad.configure do |config|
+  config.framework = 'qunit'
+  config.server_host = '127.0.0.1'
+  config.server_port = 50000
+  config.server_path = '/tests'
+  config.timeout = 10
+  config.phantomjs_bin = 'phantomjs'
+end
+```
 
 ## Contributing
 
