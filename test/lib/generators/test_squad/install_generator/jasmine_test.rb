@@ -17,6 +17,11 @@ class TestSquad::JasmineTest < Rails::Generators::TestCase
     FileUtils.rm_rf Rails.root.join('spec')
   end
 
+  test 'skip rails assets source' do
+    run_generator %w[--framework jasmine]
+    refute File.read(@gemfile_path).include?("source 'https://rails-assets.org'")
+  end
+
   test 'copy test_squad.rb' do
     run_generator %w[--framework jasmine]
     assert_file @destination_root.join('test/javascript/test_squad.rb'), /config.framework = 'jasmine'/

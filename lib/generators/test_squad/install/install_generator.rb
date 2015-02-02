@@ -1,6 +1,8 @@
 class TestSquad::InstallGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
+  SKIP_RAILS_ASSETS = %w[jasmine]
+
   class_option :framework,
     type: 'string',
     desc: 'Select the JavaScript framework. Can be jasmine, qunit, mocha or ember.',
@@ -8,16 +10,23 @@ class TestSquad::InstallGenerator < Rails::Generators::Base
     required: true
 
   def generate
-    send "generate_#{options[:framework]}"
+    send "generate_#{framework}"
+  end
+
+  def add_rails_assets_source
+    add_source 'https://rails-assets.org' unless SKIP_RAILS_ASSETS.include?(framework)
   end
 
   def generate_defaults
-    add_source 'https://rails-assets.org'
     empty_directory test_directory
     template 'test_squad.rb.erb', "#{test_directory}/test_squad.rb"
   end
 
   private
+
+  def framework
+    options[:framework]
+  end
 
   def test_directory
     if File.exist?(File.join(destination_root, 'spec'))
