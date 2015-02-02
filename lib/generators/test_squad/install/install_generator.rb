@@ -20,7 +20,11 @@ class TestSquad::InstallGenerator < Rails::Generators::Base
   private
 
   def test_directory
-    TestSquad.test_directory
+    if File.exist?(File.join(destination_root, 'spec'))
+      'spec/javascript'
+    else
+      'test/javascript'
+    end
   end
 
   def app_name

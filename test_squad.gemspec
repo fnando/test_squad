@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = TestSquad::VERSION
   s.authors     = ['Nando Vieira']
   s.email       = ['fnando.vieira@gmail.com']
-  s.homepage    = 'http://github.com/fnando/squad'
+  s.homepage    = 'http://github.com/fnando/test_squad'
   s.summary     = 'Rails and JavaScript testing, the easy way. Supports QUnit, Jasmine, Mocha and Ember.'
   s.description = s.summary
   s.license     = 'MIT'
