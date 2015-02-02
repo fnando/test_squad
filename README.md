@@ -53,6 +53,8 @@ You can run your tests with `rake test_squad`. You can also visit `http://localh
 
 ![Terminal](https://github.com/fnando/test_squad/raw/master/screenshots/terminal.png)
 
+![Ember](https://github.com/fnando/test_squad/raw/master/screenshots/terminal-ember.png)
+
 ### Configure Ember
 
 When using the Ember framework, you must configure your application name. It'll default to your Rails application name.
