@@ -7,6 +7,10 @@ module TestSquad
       new.run
     end
 
+    def initialize
+      Rails.configuration.logger = logger
+    end
+
     def config
       TestSquad.configuration
     end
@@ -20,8 +24,11 @@ module TestSquad
     end
 
     def run
-      Rails.configuration.logger = logger
+      run_server
+      run_tests
+    end
 
+    def run_server
       thread = Thread.new {
         app_server.run Rails.application,
           Port: config.server_port,
@@ -31,7 +38,9 @@ module TestSquad
       }
 
       thread.abort_on_exception = true
+    end
 
+    def run_tests
       system config.phantomjs_bin,
         File.expand_path('../../../phantomjs/runner.js', __FILE__),
         config.server_uri,
