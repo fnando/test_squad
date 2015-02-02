@@ -1,3 +1,5 @@
+/* jshint -W100 */
+/* global phantom */
 (function () {
   'use strict';
 
@@ -75,7 +77,7 @@
     return count + ' ' + (count === 1 ? singular : plural);
   }
 
-  page.onConsoleMessage = function(message, lineNumber, sourceId) {
+  page.onConsoleMessage = function(message) {
     if (test) {
       test.logging.push(message);
     } else {
@@ -127,9 +129,18 @@
 
       if (stats.tests > 0) {
         summary.push(pluralize(stats.tests, 'test'));
-        stats.assertions && summary.push(pluralize(stats.assertions, 'assertion'));
-        stats.pending && summary.push(pluralize(stats.pending, 'test') + ' pending');
-        stats.fails && summary.push(pluralize(stats.fails, 'test') + ' failed');
+
+        if (stats.assertions) {
+          summary.push(pluralize(stats.assertions, 'assertion'));
+        }
+
+        if (stats.pending) {
+          summary.push(pluralize(stats.pending, 'test') + ' pending');
+        }
+
+        if (stats.fails) {
+          summary.push(pluralize(stats.fails, 'test') + ' failed');
+        }
       } else {
         summary.push('No tests were found.');
       }
