@@ -1,5 +1,7 @@
 # TestSquad
 
+[![Build Status](https://travis-ci.org/fnando/test_squad.svg)](https://travis-ci.org/fnando/test_squad)
+
 Running JavaScript tests on your Rails app, the easy way.
 
 - Supports [QUnit](http://qunitjs.com), [Ember.js](http://emberjs.com), [Mocha](http://mochajs.org) and [Jasmine](http://jasmine.github.io/)
