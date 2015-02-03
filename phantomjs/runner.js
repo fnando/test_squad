@@ -5,8 +5,10 @@
 
   var system = require('system');
   var webpage = require('webpage');
-  var output = require('./helpers').output;
-  var colored = require('./helpers').colored;
+  var helpers = require('./helpers');
+  var output = helpers.output;
+  var colored = helpers.colored;
+  var textForSelector = helpers.textForSelector;
 
   var args = system.args;
   var url = args[1];
@@ -16,6 +18,7 @@
   var suite, test;
   var errorBuffer = [];
   var pendingBuffer = [];
+  var resourceErrors = [];
 
   page.viewportSize = {
     width: 800,
@@ -82,6 +85,10 @@
     } else {
       console.log(colored('=> ' + message, 'gray'));
     }
+  };
+
+  page.onResourceError = function(error) {
+    resourceErrors.push(error);
   };
 
   page.onCallback = function(message){
@@ -162,15 +169,24 @@
   };
 
   page.open(url, function(status){
-    if (status !== 'success') {
+    if (status === 'fail') {
       console.error('Unable to access network: ' + status);
       exit(1);
     } else {
-      // Set a timeout on the test running, otherwise tests with async problems will hang forever
-      setTimeout(function(){
-        console.error('The specified timeout of ' + timeout + ' seconds has expired. Aborting...');
+      if (resourceErrors.length === 1 && resourceErrors[0].url === url) {
+        var errorHeader = textForSelector(page, 'header > h1');
+        var errorDescription = textForSelector(page, '#container > pre');
+        var matches = errorDescription.match(/^(.*?) \(in (.*?)\)$/)
+
+        console.error(colored('ERROR:', 'red'), errorHeader, '-', matches[1]);
+        console.error(colored(matches[2], 'gray'));
         exit(1);
-      }, timeout * 1000);
+      } else {
+        setTimeout(function(){
+          console.error(colored('ERROR:', 'red'), 'The specified timeout of ' + timeout + ' seconds has expired. Aborting...');
+          exit(1);
+        }, timeout * 1000);
+      }
     }
   });
 

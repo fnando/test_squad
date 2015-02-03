@@ -7,6 +7,8 @@ ENV['RAILS_ENV'] = 'test'
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
 require File.expand_path('../../test/dummy/config/environment.rb',  __FILE__)
 require 'rails/test_help'
+require 'mocha'
+require 'mocha/mini_test'
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.

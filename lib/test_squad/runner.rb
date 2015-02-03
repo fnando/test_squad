@@ -1,5 +1,6 @@
 require 'stringio'
 require 'logger'
+require 'open3'
 
 module TestSquad
   class Runner
@@ -16,7 +17,7 @@ module TestSquad
     end
 
     def logger
-      Logger.new(StringIO.new)
+      @logger ||= Logger.new(StringIO.new)
     end
 
     def app_server
@@ -29,24 +30,29 @@ module TestSquad
     end
 
     def run_server
-      thread = Thread.new {
+      Thread.new do
         app_server.run Rails.application,
           Port: config.server_port,
           Host: config.server_host,
           Logger: logger,
           AccessLog: []
-      }
+      end
+    end
 
-      thread.abort_on_exception = true
+    def runner_script
+      File.expand_path('../../../phantomjs/runner.js', __FILE__)
     end
 
     def run_tests
-      system config.phantomjs_bin,
-        File.expand_path('../../../phantomjs/runner.js', __FILE__),
+      output, status = Open3.capture2(
+        config.phantomjs_bin,
+        runner_script,
         config.server_uri,
         config.timeout.to_s
+      )
 
-      exit $?.exitstatus
+      $stdout << output
+      exit status.exitstatus
     end
   end
 end
