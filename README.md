@@ -42,6 +42,8 @@ $ rails generate test_squad:install --framework jasmine
     create  test/javascript/test_squad.rb
 ```
 
+If you're already using <https://rails-assets.org>, you can skip the Gemfile entry with `--skip-source`.
+
 ## Running tests
 
 You can run your tests with `rake test_squad`. You can also visit `http://localhost:3000/tests` for in-browser testing.
