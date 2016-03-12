@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class TestSquadConfigurationTest < ActiveSupport::TestCase
   def with_env(options, &block)
@@ -42,27 +42,27 @@ class TestSquadConfigurationTest < ActiveSupport::TestCase
     @config = TestSquad::Configuration.new
   end
 
-  test 'phantomjs_bin option' do
-    assert_configuration 'TEST_SQUAD_PHANTOMJS_BIN', 'phantomjs_bin', 'phantomjs'
+  test "phantomjs_bin option" do
+    assert_configuration "TEST_SQUAD_PHANTOMJS_BIN", "phantomjs_bin", "phantomjs"
   end
 
-  test 'server_host option' do
-    assert_configuration 'TEST_SQUAD_SERVER_HOST', 'server_host', '127.0.0.1'
+  test "server_host option" do
+    assert_configuration "TEST_SQUAD_SERVER_HOST", "server_host", "127.0.0.1"
   end
 
-  test 'server_port option' do
-    assert_configuration 'TEST_SQUAD_SERVER_PORT', 'server_port', 42424
+  test "server_port option" do
+    assert_configuration "TEST_SQUAD_SERVER_PORT", "server_port", 42424
   end
 
-  test 'server_path option' do
-    assert_configuration 'TEST_SQUAD_SERVER_PATH', 'server_path', '/tests'
+  test "server_path option" do
+    assert_configuration "TEST_SQUAD_SERVER_PATH", "server_path", "/tests"
   end
 
-  test 'timeout option' do
-    assert_configuration 'TEST_SQUAD_TIMEOUT', 'timeout', 10
+  test "timeout option" do
+    assert_configuration "TEST_SQUAD_TIMEOUT", "timeout", 10
   end
 
-  test 'server uri' do
-    assert_equal @config.server_uri, 'http://127.0.0.1:42424/tests'
+  test "server uri" do
+    assert_equal @config.server_uri, "http://127.0.0.1:42424/tests"
   end
 end

@@ -1,12 +1,12 @@
-require 'test_helper'
+require "test_helper"
 
 class TestSquadRunnerTest < ActiveSupport::TestCase
-  test 'server adapter' do
+  test "server adapter" do
     server = TestSquad::Runner.new.app_server
     assert_equal Rack::Handler::WEBrick, server
   end
 
-  test 'starts server' do
+  test "starts server" do
     runner = TestSquad::Runner.new
     config = runner.config
     app_server = mock
@@ -30,11 +30,11 @@ class TestSquadRunnerTest < ActiveSupport::TestCase
     thread.kill
   end
 
-  test 'execute tests' do
+  test "execute tests" do
     runner = TestSquad::Runner.new
     config = runner.config
     process_status = mock
-    calls = sequence('calls')
+    calls = sequence("calls")
 
     Open3.expects(:capture2)
       .with(
@@ -43,12 +43,12 @@ class TestSquadRunnerTest < ActiveSupport::TestCase
         config.server_uri,
         config.timeout.to_s
       )
-      .returns(['OUTPUT', process_status])
+      .returns(["OUTPUT", process_status])
       .in_sequence(calls)
 
     $stdout
       .expects(:<<)
-      .with('OUTPUT')
+      .with("OUTPUT")
       .in_sequence(calls)
 
     process_status

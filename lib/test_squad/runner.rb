@@ -1,6 +1,6 @@
-require 'stringio'
-require 'logger'
-require 'open3'
+require "stringio"
+require "logger"
+require "open3"
 
 module TestSquad
   class Runner
@@ -21,7 +21,7 @@ module TestSquad
     end
 
     def app_server
-      Rack::Handler.pick(['puma', 'thin', 'webrick'])
+      Rack::Handler.pick(["puma", "thin", "webrick"])
     end
 
     def run
@@ -40,7 +40,7 @@ module TestSquad
     end
 
     def runner_script
-      File.expand_path('../../../phantomjs/runner.js', __FILE__)
+      File.expand_path("../../../phantomjs/runner.js", __FILE__)
     end
 
     def run_tests

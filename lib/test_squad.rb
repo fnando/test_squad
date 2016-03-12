@@ -1,6 +1,6 @@
-require 'test_squad/engine'
-require 'test_squad/runner'
-require 'test_squad/configuration'
+require "test_squad/engine"
+require "test_squad/runner"
+require "test_squad/configuration"
 
 module TestSquad
   def self.configuration
@@ -12,15 +12,15 @@ module TestSquad
   end
 
   def self.app_class_name
-    Rails.application.class.name.split('::').first
+    Rails.application.class.name.split("::").first
   end
 
   def self.test_directory
     @test_directory ||= begin
-      if Rails.root.join('spec').exist?
-        'spec/javascript'
+      if Rails.root.join("spec").exist?
+        "spec/javascript"
       else
-        'test/javascript'
+        "test/javascript"
       end
     end
   end

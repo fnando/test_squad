@@ -35,31 +35,31 @@ module TestSquad
     end
 
     def phantomjs_bin
-      get_value('TEST_SQUAD_PHANTOMJS_BIN', __method__, 'phantomjs')
+      get_value("TEST_SQUAD_PHANTOMJS_BIN", __method__, "phantomjs")
     end
 
     def server_host
-      get_value('TEST_SQUAD_SERVER_HOST', __method__, '127.0.0.1')
+      get_value("TEST_SQUAD_SERVER_HOST", __method__, "127.0.0.1")
     end
 
     def server_port
-      get_value('TEST_SQUAD_SERVER_PORT', __method__, 42424)
+      get_value("TEST_SQUAD_SERVER_PORT", __method__, 42_424)
     end
 
     def server_path
-      get_value('TEST_SQUAD_SERVER_PATH', __method__, '/tests')
+      get_value("TEST_SQUAD_SERVER_PATH", __method__, "/tests")
     end
 
     def timeout
-      get_value('TEST_SQUAD_TIMEOUT', __method__, 10)
+      get_value("TEST_SQUAD_TIMEOUT", __method__, 10)
     end
 
     private
 
     def get_value(env_var, option_name, default_value)
       ENV[env_var] ||
-      instance_variable_get("@#{option_name}") ||
-      default_value
+        instance_variable_get("@#{option_name}") ||
+        default_value
     end
   end
 end

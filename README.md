@@ -30,7 +30,7 @@ $ bundle
 
 ## Usage
 
-After installing TestSquad, generate your tests skeleton. The generator will detect if you're using RSpec or TestUnit and will generate the `javascript` directory basead on that detection. Just use the command `rails generate test_squad:install --framework FRAMEWORK`.
+After installing TestSquad, generate your tests skeleton. The generator will detect if you're using RSpec or TestUnit and will generate the `javascript` directory based on that detection. Just use the command `rails generate test_squad:install --framework FRAMEWORK`.
 
 ```console
 $ rails generate test_squad:install --framework jasmine
