@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
 <head>
   <meta charset="utf-8">
   <title>QUnit: <%= TestSquad.app_class_name %></title>
-  <%= stylesheet_link_tag 'qunit' %>
+  <%= stylesheet_link_tag "qunit" %>
 </head>
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
-  <%= javascript_include_tag 'qunit', 'test_squad/qunit-phantom', 'test_helper' %>
+  <%= javascript_include_tag "qunit", "test_squad/qunit-phantom", "test_helper" %>
 </body>
 </html>

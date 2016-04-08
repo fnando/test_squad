@@ -1,11 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
 <head>
   <meta charset="utf-8">
   <title>Mocha: <%= TestSquad.app_class_name %></title>
-  <%= stylesheet_link_tag 'mocha' %>
+  <%= stylesheet_link_tag "mocha" %>
 </head>
 <body>
   <div id="mocha"></div>
-  <%= javascript_include_tag 'mocha', 'test_squad/mocha-reporter', 'spec_helper' %>
+  <%= javascript_include_tag "mocha", "test_squad/mocha-reporter", "spec_helper" %>
 </body>
 </html>
