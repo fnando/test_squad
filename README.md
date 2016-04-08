@@ -18,7 +18,7 @@ Add these lines to your application's `Gemfile`:
 
 ```ruby
 group :development, :test do
-  gem 'test_squad'
+  gem "test_squad"
 end
 ```
 
@@ -75,7 +75,7 @@ When using the Ember framework, you must configure your application name. It'll 
 App = SquadSample;
 
 // Set up Ember testing.
-App.rootElement = '#ember-testing';
+App.rootElement = "#ember-testing";
 App.setupForTesting();
 App.injectTestHelpers();
 ```
@@ -107,20 +107,20 @@ By default, Mocha is configured with [expect.js](https://github.com/Automattic/e
 Just add the dependency to your `Gemfile`. Use `rails-assets-chai` or `rails-assets-should`:
 
 ```ruby
-source 'https://rubygems.org'
-source 'https://rails-assets.org'
+source "https://rubygems.org"
+source "https://rails-assets.org"
 
-gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem "rails", "4.2.0"
+gem "sass-rails", "~> 5.0"
+gem "uglifier", ">= 1.3.0"
 
-gem 'ember-rails'
-gem 'rails-assets-jquery'
+gem "ember-rails"
+gem "rails-assets-jquery"
 
 group :development, :test do
-  gem 'test_squad', path: '../../test_squad'
-  gem 'rails-assets-mocha'
-  gem 'rails-assets-chai'
+  gem "test_squad", path: "../../test_squad"
+  gem "rails-assets-mocha"
+  gem "rails-assets-chai"
 end
 ```
 
@@ -134,9 +134,9 @@ Install the dependency with `bundle install`. Then require the library on `{test
 
 var assert = chai.assert;
 
-mocha.setup('bdd');
+mocha.setup("bdd");
 mocha.checkLeaks();
-mocha.globals(['jQuery']);
+mocha.globals(["jQuery"]);
 mocha.reporter(mocha.TestSquad);
 window.onload = function(){
   mocha.run();
@@ -148,7 +148,7 @@ window.onload = function(){
 If you have a catch-all route, add the following line to your `config/routes.rb` file. This will be required if you configure Ember.js to use `history.pushState`.
 
 ```ruby
-get :tests, to: 'test_squad#tests' unless Rails.env.production?
+get :tests, to: "test_squad#tests" unless Rails.env.production?
 ```
 
 Otherwise you won't be able to to run your in-browser tests.
@@ -167,12 +167,12 @@ You can configure these options using the `{test,spec}/javascript/test_squad.rb`
 
 ```ruby
 TestSquad.configure do |config|
-  config.framework = 'qunit'
-  config.server_host = '127.0.0.1'
+  config.framework = "qunit"
+  config.server_host = "127.0.0.1"
   config.server_port = 50000
-  config.server_path = '/tests'
+  config.server_path = "/tests"
   config.timeout = 10
-  config.phantomjs_bin = 'phantomjs'
+  config.phantomjs_bin = "phantomjs"
 end
 ```
 

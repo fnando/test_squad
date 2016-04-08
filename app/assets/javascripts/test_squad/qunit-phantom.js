@@ -19,7 +19,7 @@
     stats.tests += 1;
 
     callPhantom({
-      name: 'test start',
+      name: "test start",
       title: data.name
     });
   });
@@ -34,7 +34,7 @@
 
   QUnit.moduleStart(function(data){
     callPhantom({
-      name: 'suite start',
+      name: "suite start",
       title: data.name
     });
   });
@@ -47,13 +47,13 @@
       error = assertion.message;
 
       if (assertion.source) {
-        error += '\n' + assertion.source;
+        error += "\n" + assertion.source;
       }
 
-      error = error.replace(/(Died on test #\d+)/gmi, '$1\n');
-      error = error.replace(/^\s*/gm, '    ');
-      error = error.replace(/^\s+at .*?assets\/qunit\/qunit.*?\.js.*?$/mg, '');
-      error = error.replace(/\n+$/, '');
+      error = error.replace(/(Died on test #\d+)/gmi, "$1\n");
+      error = error.replace(/^\s*/gm, "    ");
+      error = error.replace(/^\s+at .*?assets\/qunit\/qunit.*?\.js.*?$/mg, "");
+      error = error.replace(/\n+$/, "");
     } else if (data.skipped) {
       stats.pending += 1;
     } else {
@@ -61,7 +61,7 @@
     }
 
     callPhantom({
-      name: 'test end',
+      name: "test end",
       title: data.name,
       passed: data.failed === 0 && !data.skipped,
       pending: data.skipped,
@@ -77,7 +77,7 @@
     stats.elapsed = new Date().getTime() - start;
 
     callPhantom({
-      name: 'end',
+      name: "end",
       stats: stats
     });
   });

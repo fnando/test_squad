@@ -14,85 +14,85 @@ Mocha.reporters.PhantomJS = function(runner) {
 
   var start;
 
-  runner.on('pass', function(test){
+  runner.on("pass", function(test){
     stats.passes += 1;
   });
 
-  runner.on('fail', function(test, err){
+  runner.on("fail", function(test, err){
     stats.fails += 1;
   });
 
-  runner.on('pending', function(suite){
+  runner.on("pending", function(suite){
     stats.pending += 1;
   });
 
-  runner.on('start', function(test){
+  runner.on("start", function(test){
     start = new Date().getTime();
   });
 
-  runner.on('end', function(){
+  runner.on("end", function(){
     stats.elapsed = new Date().getTime() - start;
     callPhantom({
-      name: 'end',
+      name: "end",
       stats: stats
     });
   });
 
-  runner.on('test', function(test){
+  runner.on("test", function(test){
     stats.tests += 1;
 
     callPhantom({
-      name: 'test start',
+      name: "test start",
       title: test.title
     });
   });
 
-  runner.on('test end', function(test){
-    if (test.state === 'failed') {
+  runner.on("test end", function(test){
+    if (test.state === "failed") {
       var error = test.err.stack || test.err.toString();
 
       // FF / Opera do not add the message
       if (!~error.indexOf(test.err.message)) {
-        error = test.err.message + '\n' + error;
+        error = test.err.message + "\n" + error;
       }
 
       // <=IE7 stringifies to [Object Error]. Since it can be overloaded, we
       // check for the result of the stringifying.
-      if ('[object Error]' == error) {
+      if ("[object Error]" == error) {
         error = test.err.message;
       }
 
-      // Safari doesn't give you a stack. Let's at least provide a source line.
+      // Safari doesn"t give you a stack. Let"s at least provide a source line.
       if (!test.err.stack && test.err.sourceURL && test.err.line !== undefined) {
         error += "\n(" + test.err.sourceURL + ":" + test.err.line + ")";
       }
 
-      error = error.replace(/^\s+at .*?assets\/mocha\/.*?\.js.*?$/mg, '');
-      error = error.replace(/^\s+at .*?assets\/expect\/.*?\.js.*?$/mg, '');
-      error = error.replace(/^\s+at .*?assets\/should\/.*?\.js.*?$/mg, '');
-      error = error.replace(/^\s+at .*?assets\/chai\/.*?\.js.*?$/mg, '');
-      error = error.replace(/\n+$/, '');
+      error = error.replace(/^\s+at .*?assets\/mocha\/.*?\.js.*?$/mg, "");
+      error = error.replace(/^\s+at .*?assets\/expect\/.*?\.js.*?$/mg, "");
+      error = error.replace(/^\s+at .*?assets\/should\/.*?\.js.*?$/mg, "");
+      error = error.replace(/^\s+at .*?assets\/chai\/.*?\.js.*?$/mg, "");
+      error = error.replace(/\n+$/, "");
     }
 
     callPhantom({
-      name: 'test end',
+      name: "test end",
       title: test.title,
-      passed: test.state === 'passed',
+      passed: test.state === "passed",
       pending: test.pending,
       failure: error
     });
   });
 
-  runner.on('suite', function(suite){
+  runner.on("suite", function(suite){
     callPhantom({
-      name: 'suite start',
+      name: "suite start",
       title: suite.title
     });
   });
 
-  runner.on('suite end', function(suite){
+  runner.on("suite end", function(suite){
     callPhantom({
-      name: 'suite end',
+      name: "suite end",
       title: suite.title
     });
   });

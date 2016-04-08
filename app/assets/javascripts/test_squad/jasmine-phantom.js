@@ -28,7 +28,7 @@
         stats.elapsed = new Date().getTime() - start;
 
         callPhantom({
-          name: 'end',
+          name: "end",
           stats: stats
         });
       };
@@ -37,15 +37,15 @@
         stats.tests += 1;
 
         callPhantom({
-          name: 'test start',
+          name: "test start",
           title: result.description
         });
       };
 
       this.specDone = function(result) {
-        var pending = result.status === 'pending';
-        var passed = result.status === 'passed';
-        var failed = result.status === 'failed';
+        var pending = result.status === "pending";
+        var passed = result.status === "passed";
+        var failed = result.status === "failed";
         var error, assertion;
 
         stats.assertions += result.failedExpectations.length;
@@ -56,13 +56,13 @@
 
         if (failed) {
           assertion = result.failedExpectations[0];
-          error = assertion.stack.replace(/^\s*/gm, '    ');
-          error = error.replace(/^\s+at .*?assets\/jasmine\/(jasmine|boot).*?\.js.*?$/mg, '');
-          error = error.replace(/\n+$/, '');
+          error = assertion.stack.replace(/^\s*/gm, "    ");
+          error = error.replace(/^\s+at .*?assets\/jasmine\/(jasmine|boot).*?\.js.*?$/mg, "");
+          error = error.replace(/\n+$/, "");
         }
 
         callPhantom({
-          name: 'test end',
+          name: "test end",
           title: result.description,
           passed: passed,
           pending: pending,
@@ -72,7 +72,7 @@
 
       this.suiteStarted = function(result) {
         callPhantom({
-          name: 'suite start',
+          name: "suite start",
           title: result.description
         });
       };

@@ -1,6 +1,6 @@
 module TestSquad
   class Engine < ::Rails::Engine
-    initializer 'test_squad' do
+    initializer "test_squad" do
       next unless %w[development test].include?(Rails.env)
 
       config = Rails.application.config

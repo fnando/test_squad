@@ -5,7 +5,7 @@
   var env = jasmine.getEnv();
   var jasmineInterface = jasmineRequire.interface(jasmine, env);
 
-  if (typeof window == 'undefined' && typeof exports == 'object') {
+  if (typeof window == "undefined" && typeof exports == "object") {
     extend(exports, jasmineInterface);
   } else {
     extend(window, jasmineInterface);
@@ -15,12 +15,12 @@
     getWindowLocation: function() { return window.location; }
   });
 
-  var catchingExceptions = queryString.getParam('catch');
-  env.catchExceptions(typeof catchingExceptions === 'undefined' ? true : catchingExceptions);
+  var catchingExceptions = queryString.getParam("catch");
+  env.catchExceptions(typeof catchingExceptions === "undefined" ? true : catchingExceptions);
 
   var htmlReporter = new jasmine.HtmlReporter({
     env: env,
-    onRaiseExceptionsClick: function() { queryString.setParam('catch', !env.catchingExceptions()); },
+    onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
     getContainer: function() { return document.body; },
     createElement: function() { return document.createElement.apply(document, arguments); },
     createTextNode: function() { return document.createTextNode.apply(document, arguments); },
@@ -29,7 +29,7 @@
 
   var phantomReporter = new jasmine.PhantomReporter({
     env: env,
-    onRaiseExceptionsClick: function() { queryString.setParam('catch', !env.catchingExceptions()); },
+    onRaiseExceptionsClick: function() { queryString.setParam("catch", !env.catchingExceptions()); },
     timer: new jasmine.Timer()
   });
 
@@ -38,7 +38,7 @@
   env.addReporter(phantomReporter);
 
   var specFilter = new jasmine.HtmlSpecFilter({
-    filterString: function() { return queryString.getParam('spec'); }
+    filterString: function() { return queryString.getParam("spec"); }
   });
 
   env.specFilter = function(spec) {
