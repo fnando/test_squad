@@ -35,7 +35,8 @@ module TestSquad
           Port: config.server_port,
           Host: config.server_host,
           Logger: logger,
-          AccessLog: []
+          AccessLog: [],
+          Silent: true
       end
     end
 
