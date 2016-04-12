@@ -145,6 +145,8 @@ window.onload = function(){
 
 ## Troubleshooting
 
+### Route is not available
+
 If you have a catch-all route, add the following line to your `config/routes.rb` file. This will be required if you configure Ember.js to use `history.pushState`.
 
 ```ruby
@@ -153,12 +155,38 @@ get :tests, to: "test_squad#tests" unless Rails.env.production?
 
 Otherwise you won't be able to to run your in-browser tests.
 
+### Using NPM/Bower instead of rails-assets
+
+You may want to use something else (NPM, Bower directly, etc). In this case, the easiest way is adding QUnit's directory to the load path.
+
+Let's configure QUnit from NPM. Create the file `package.json` like the following:
+
+```json
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true
+}
+```
+
+Run the command `npm install qunitjs --save-dev` to install QUnit. The library will be available at `node_modules/qunitjs/qunit`. Now modify `config/initializers/assets.rb`, adding this directory to the load path.
+
+```ruby
+# ...
+
+if Rails.env.development?
+  Rails.application.config.assets << Rails.root.join("node_modules/qunitjs/qunit").to_s
+end
+```
+
+That's it!
+
 ## Configuration
 
 The rake task accepts some env variables.
 
 - `TEST_SQUAD_SERVER_HOST`: the binding host. Defaults to `localhost`.
-- `TEST_SQUAD_SERVER_PORT`: the server port. Defaults to `50000`.
+- `TEST_SQUAD_SERVER_PORT`: the server port. Defaults to `42424`.
 - `TEST_SQUAD_SERVER_PATH`: the server path. Defaults to `/tests`.
 - `TEST_SQUAD_TIMEOUT`: how much time a test can take. Defaults to `10` (seconds).
 - `TEST_SQUAD_PHANTOMJS_BIN`: set the PhantomJS binary. Defaults to `phantomjs`.
@@ -169,7 +197,7 @@ You can configure these options using the `{test,spec}/javascript/test_squad.rb`
 TestSquad.configure do |config|
   config.framework = "qunit"
   config.server_host = "127.0.0.1"
-  config.server_port = 50000
+  config.server_port = 42424
   config.server_path = "/tests"
   config.timeout = 10
   config.phantomjs_bin = "phantomjs"
@@ -190,7 +218,7 @@ Remember:
 
 - Don't mess with versioning.
 - Follow the code style already present.
-- Opening an issue asking if your feature/change will be welcomed it's recommended. That way you don't waste your time.
+- Opening an issue asking if your feature/change will be welcomed it's recommended, so that don't waste your time.
 
 ## License
 
