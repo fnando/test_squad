@@ -220,7 +220,7 @@ Remember:
 
 - Don't mess with versioning.
 - Follow the code style already present.
-- Opening an issue asking if your feature/change will be welcomed it's recommended, so that don't waste your time.
+- Opening an issue asking if your feature/change will be merged it's recommended, so that you don't waste your time.
 
 ## License
 
