@@ -14,7 +14,8 @@ class TestSquadRunnerTest < ActiveSupport::TestCase
       Port: config.server_port,
       Host: config.server_host,
       Logger: runner.logger,
-      AccessLog: []
+      AccessLog: [],
+      Silent: true
     }
 
     app_server
