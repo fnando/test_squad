@@ -34,32 +34,21 @@ class TestSquadRunnerTest < ActiveSupport::TestCase
   test "execute tests" do
     runner = TestSquad::Runner.new
     config = runner.config
-    process_status = mock
     calls = sequence("calls")
 
-    Open3.expects(:capture2)
+    runner
+      .expects(:system)
       .with(
         config.phantomjs_bin,
         runner.runner_script,
         config.server_uri,
         config.timeout.to_s
       )
-      .returns(["OUTPUT", process_status])
-      .in_sequence(calls)
-
-    $stdout
-      .expects(:<<)
-      .with("OUTPUT")
-      .in_sequence(calls)
-
-    process_status
-      .expects(:exitstatus)
-      .returns(1234)
       .in_sequence(calls)
 
     runner
       .expects(:exit)
-      .with(1234)
+      .with(0)
       .in_sequence(calls)
 
     runner.run_tests

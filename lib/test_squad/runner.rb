@@ -52,7 +52,8 @@ module TestSquad
         config.timeout.to_s
       )
 
-      exit $?.exitstatus
+      exit_code = $? ? $?.exitstatus : 0
+      exit(exit_code)
     end
   end
 end
