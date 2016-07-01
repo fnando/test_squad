@@ -1,8 +1,10 @@
 # TestSquad
 
-[![Build Status](https://travis-ci.org/fnando/test_squad.svg)](https://travis-ci.org/fnando/test_squad)
+[![Travis-CI](https://travis-ci.org/fnando/test_squad.png)](https://travis-ci.org/fnando/test_squad)
 [![Code Climate](https://codeclimate.com/github/fnando/test_squad/badges/gpa.svg)](https://codeclimate.com/github/fnando/test_squad)
-[![Test Coverage](https://codeclimate.com/github/fnando/test_squad/badges/coverage.svg)](https://codeclimate.com/github/fnando/test_squad)
+[![Test Coverage](https://codeclimate.com/github/fnando/test_squad/badges/coverage.svg)](https://codeclimate.com/github/fnando/test_squad/coverage)
+[![Gem](https://img.shields.io/gem/v/test_squad.svg)](https://rubygems.org/gems/test_squad)
+[![Gem](https://img.shields.io/gem/dt/test_squad.svg)](https://rubygems.org/gems/test_squad)
 
 Running JavaScript tests on your Rails app, the easy way.
 
