@@ -2,24 +2,31 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+$LOAD_PATH.unshift File.expand_path("#{__dir__}/../lib")
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
-ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
-require File.expand_path("../../test/dummy/config/environment.rb", __FILE__)
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
+require "rails"
+require "bundler/setup"
+require "action_controller/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
+require "rails/test_unit/railtie"
+
+Bundler.require(*Rails.groups)
+require "test_squad"
+
+app_file = File.join(__dir__, "support/app_#{Rails::VERSION::STRING}.rb")
+
+if File.file?(app_file)
+  require app_file
+else
+  require File.join(__dir__, "support/app.rb")
+end
+
 require "rails/test_help"
 require "mocha"
 require "mocha/mini_test"
 require "minitest/utils"
 require "minitest/autorun"
-
-# Filter out Minitest backtrace while allowing backtrace from other libraries
-# to be shown.
-Minitest.backtrace_filter = Minitest::BacktraceFilter.new
-
-# Load support files
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
-
-# Load fixtures from the engine
-if ActiveSupport::TestCase.respond_to?(:fixture_path=)
-  ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
-end
