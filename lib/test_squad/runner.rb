@@ -45,15 +45,14 @@ module TestSquad
     end
 
     def run_tests
-      output, status = Open3.capture2(
+      system(
         config.phantomjs_bin,
         runner_script,
         config.server_uri,
         config.timeout.to_s
       )
 
-      $stdout << output
-      exit status.exitstatus
+      exit $?.exitstatus
     end
   end
 end
